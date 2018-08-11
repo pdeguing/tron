@@ -1,0 +1,1 @@
+This project aims to create a simple console game similar to the world famous Tron arcade game. It is a recreational project I choose to do to relax a bit after get_next_line and before diving into prinft monolith. It's a fun introduction to the graphic branch as it allows to learn minilibx, the basic library provided by 42.

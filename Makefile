@@ -6,13 +6,13 @@
 #    By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/10 17:38:43 by pdeguing          #+#    #+#              #
-#    Updated: 2018/08/10 18:25:55 by pdeguing         ###   ########.fr        #
+#    Updated: 2018/08/11 11:56:31 by pdeguing         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = tron
 CFLAG = -Wall -Wextra -Werror
-SRC = tron.c
+SRC = tron.c matrix.c param.c put_player.c
 INCLUDES = -I /minilibx -I /libft
 LIB = -lmlx -L./minilibx/ -lft -L./libft/ 
 MLX = minilibx/minilibx.a
