@@ -6,7 +6,7 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/10 17:29:05 by pdeguing          #+#    #+#             */
-/*   Updated: 2018/08/10 18:54:27 by pdeguing         ###   ########.fr       */
+/*   Updated: 2018/08/10 20:59:58 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int					deal_key(int key, void *param)
 {
 	ft_putnbr(key);
 	ft_putchar('\n');
-	mlx_pixel_put((t_param *)param->mlx_ptr, (t_param *)param->win_ptr, 50, 50, 0xFFFFFF);
+	mlx_pixel_put(param.mlx_ptr, param.win_ptr, 50, 50, 0xFFFFFF);
 	return (0);
 }
 
