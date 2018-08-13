@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tron.h                                             :+:      :+:    :+:   */
+/*   object.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/11 07:49:33 by pdeguing          #+#    #+#             */
-/*   Updated: 2018/08/13 12:03:31 by pdeguing         ###   ########.fr       */
+/*   Created: 2018/08/13 09:24:37 by pdeguing          #+#    #+#             */
+/*   Updated: 2018/08/13 12:03:34 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef TRON_H
-# define TRON_H
-# include "minilibx/mlx.h"
-# include "libft/libft.h"
-# include "game.h"
-# include "matrix.h"
-# include "object.h"
-# define WHITE 0xFFFFFF
-# define BLUE 0x00BFFF
-# define ORANGE 0xFF7F00
-# define GREY 0x202020
-# define PLAYERCOLOR 0xFFFFFF
-# define WINSIZE 700
-# define PLAYERSIZE 5
 
-#endif
+#include "tron.h"
+
+typedef struct			s_object
+{
+	int					id;
+	int					x;
+	int					y;
+	int					size;
+	int					direction;
+	int					color;
+}						t_object;
+
+t_object				*object_new(int id);
+void					object_init(t_object *object, int x, int y, int size, int direction);
+void					object_display(t_object *object, t_game *game);
+void					object_place(t_object *object, t_game *game);

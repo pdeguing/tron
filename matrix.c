@@ -6,55 +6,70 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/11 11:22:37 by pdeguing          #+#    #+#             */
-/*   Updated: 2018/08/11 21:59:51 by pdeguing         ###   ########.fr       */
+/*   Updated: 2018/08/13 11:04:23 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tron.h"
 
-char				**create_matrix()
+int					matrix_new(t_game *game)
 {
-	char			**matrix;
+	int				**matrix;
+	int				x;
+
+	matrix = (int **)malloc(sizeof(int *) * WINSIZE);
+	if (!matrix)
+		return (-1);
+	x = 0;
+	while (x <= WINSIZE)
+	{
+		matrix[x] = (int *)malloc(sizeof(int) * WINSIZE);
+		if (!matrix[x])
+		{
+			while (matrix[--x])
+			{
+				free(matrix[x]);
+				matrix[x] = NULL;
+			}
+			free(matrix);
+			matrix = NULL;
+			return (-1);
+		}
+		x++;
+	}
+	game->matrix = matrix;
+	return (0);
+}
+
+void				matrix_init(t_game *game)
+{
 	int				x;
 	int				y;
 
-	matrix = (char **)malloc(sizeof(char *) * (WINSIZE + 1));
-	if (!matrix)
-		return (NULL);
-	matrix[WINSIZE] = NULL;
 	x = 0;
-	while (x < WINSIZE)
+	while (x <= WINSIZE)
 	{
-		matrix[x] = ft_strnew(WINSIZE);
-		if (!matrix[x])
-			return (NULL);
 		y = 0;
-		while (y < WINSIZE)
+		while (y <= WINSIZE)
 		{
-			matrix[x][y] = '.';
+			game->matrix[x][y] = 0;
 			y++;
 		}
 		x++;
 	}
-	return (matrix);
 }
 
-void				print_matrix(char **matrix)
+void			matrix_del(t_game *game)
 {
-	int				x;
+	int			x;
 
 	x = 0;
-	while (matrix[x])
+	while (x <= WINSIZE)
 	{
-		ft_putendl(matrix[x]);
+		free(game->matrix[x]);
+		game->matrix[x] = NULL;
 		x++;
 	}
-}
-
-void			alterate_matrix(char **matrix, int x, int y, char c)
-{
-	matrix[x][y] = c;
-	matrix[x][y + 1] = c;
-	matrix[x + 1][y] = c;
-	matrix[x + 1][y + 1] = c;
+	free(game->matrix);
+	game->matrix = NULL;
 }
