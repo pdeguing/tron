@@ -6,7 +6,7 @@
 /*   By: pdeguing <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 10:31:26 by pdeguing          #+#    #+#             */
-/*   Updated: 2018/08/13 12:03:32 by pdeguing         ###   ########.fr       */
+/*   Updated: 2018/08/14 12:33:39 by pdeguing         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void			game_grid(t_game *game, int spacing, int color)
 	int			x;
 	int			y;
 
-	y = 0;
-	while (y < WINSIZE)
+	y = -1;
+	while (y < WINSIZE - 1)
 	{
 		x = 0;
 		while (x < WINSIZE)
@@ -40,5 +40,16 @@ void			game_grid(t_game *game, int spacing, int color)
 			x++;
 		}
 		y += spacing;
+	}
+	x = -1;
+	while (x < WINSIZE - 1)
+	{
+		y = 0;
+		while (y < WINSIZE)
+		{
+			mlx_pixel_put(game->mlx_ptr, game->win_ptr, x, y, color);
+			y++;
+		}
+		x += spacing;
 	}
 }
